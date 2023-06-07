@@ -1,0 +1,47 @@
+{
+  "name": "vue-document-editor",
+  "version": "2.2.2",
+  "description": "Paper-sized WYSIWYG document editor for Vue apps",
+  "author": {
+    "name": "Romain Lamothe",
+    "url": "http://www.motla.fr/"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "document",
+    "editor",
+    "wysiwyg",
+    "page",
+    "a4",
+    "text",
+    "processor",
+    "application"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motla/vue-document-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/motla/vue-document-editor/issues"
+  },
+  "homepage": "https://github.com/motla/vue-document-editor",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --dest docs && vue-cli-service build --target lib --name VueDocumentEditor src/DocumentEditor/DocumentEditor.vue",
+    "version": "npm run build && git add -A"
+  },
+  "main": "src/DocumentEditor/DocumentEditor.vue",
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "vue": "^3.2.45",
+    "vue-file-toolbar-menu": "^2.2.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

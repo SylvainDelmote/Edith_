@@ -1,0 +1,78 @@
+// Quasar SCSS (& Sass) Variables
+// --------------------------------------------------
+
+// EXPORTE L ENSEMBLE DES COULEURS DU NORD THEME
+:root{
+  //Polar Night
+--nord0 : #2E3440;
+--nord1 : #3B4252;
+--nord2 :#434C5E;
+--nord3 : #4C566A;
+
+// Snow Storm
+--nord4:#D8DEE9;
+--nord5:#E5E9F0;
+--nord6:#ECEFF4;
+
+//Frost
+--nord7:#8FBCBB;
+--nord8:#88C0D0;
+--nord9:#81A1C1;
+--nord10:#5E81AC;
+
+//Aurora
+--nord11:#BF616A;
+--nord12:#D08770;
+--nord13:#EBCB8B;
+--nord14:#A3BE8C;
+--nord15:#B48EAD;
+}
+
+
+// DEFINI LA PALETTE POUR LE MODE CLAIR
+body.body--light{
+    --q-primary : var(--nord10);
+    --q-secondary : var(--nord4);
+    --q-accent: var(--nord7);
+    --q-dark : var(--nord10);
+    --q-info: var(--nord12);
+    --q-warning: var(--nord13);
+    --q-positive  : var(--nord8);
+    --q-negative  : var(--nord11);
+
+    // AJOUTE  UNE COULEUR MAIN 
+    .text-main{
+      color: var(--nord2) !important;
+    }
+    .bg-main{
+      background:rgb(254, 254, 255)  !important;
+    }
+    
+    // DEFINI LA COULEUR DE BACKGROUND DU BODY
+    background-color: rgb(254, 254, 255);
+
+  }
+
+// DEFINI LA PALETTE POUR LE MODE SOMBRE 
+  body.body--dark{
+    --q-primary : var(--nord7);
+    --q-secondary : var(--nord3);
+    --q-dark : var(--nord10);
+    --q-accent: var(--nord4);
+    --q-info: var(--nord13);
+    --q-warning: var(--nord12);
+    --q-positive  : var(--nord8);
+    --q-negative  : var(--nord11);
+
+    // AJOUTE UNE COULEUR MAIN 
+    .text-main{
+      color: var(--nord2) !important;
+    }
+    .bg-main{
+      background : var(--nord2) !important;
+    }
+
+    // COULEUR DU BACKGROUND 
+    background-color: var(--nord2);
+  }
+

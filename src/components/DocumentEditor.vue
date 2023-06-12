@@ -4,11 +4,15 @@ import {ref, defineCustomElement, markRaw, computed } from "vue";
 import VueDocumentEditor from '../../module/vue-document-editor'
 import * as Custom from "../components/custom components/index.js";
 import { useRouter } from 'vue-router'
+import { getDataFromDb } from '../composables/ImportData.js'
+
 
 
 // VARIABLES
-const contenu = ref([
-        '<span><h1>What is Vue?!</h1>'+ 'Vue (pronounced /vju/, like view) is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex. ',
+const htmlPlaceholder = '<span><h1>What is Vue?!</h1>'+ 'Vue (pronounced /vju/, like view) is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS, and JavaScript and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be they simple or complex. '
+const { fetchedData, errorMessage } = getDataFromDb('/documents');
+
+const contenu = ref([htmlPlaceholder
       ])
 const contenuHtml = ref('')
 const documentEstEditable = ref(true)
@@ -17,7 +21,16 @@ const contenuPiedPage  = ref ('Contenu Pied Page Exemple')
 const router = useRouter()
 
 
+
 //FONCTIONS
+const fetchData = () => {
+      // Appeler getDataFromDb() à nouveau pour actualiser les données
+      getDataFromDb('/documents');
+    };
+
+
+
+
 function creerCustomElement(customComponent){
 
   function generateurIDUnique(){
@@ -196,13 +209,14 @@ function onPaste (evt) {
 </script>
 
 <template>
-  <form
+    <form
     autocorrect="off"
     autocapitalize="off"
     autocomplete="off"
     spellcheck="false"
     class="text-main"
     >
+    
     <VueDocumentEditor
       v-model:content="contenu"
       :editable= "documentEstEditable"
@@ -211,6 +225,7 @@ function onPaste (evt) {
     />
 
   </form>
+
 
 </template>
 

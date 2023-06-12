@@ -29,7 +29,7 @@ watch(darkModeIsEnabled, toggleDarkMode)
 <template>
 <q-bar>
   <div  > 
-    <q-btn :disable=!userIsLoggedIn flat no-caps size="14px"   color="white" label="Fichier">
+    <q-btn flat no-caps size="14px"   color="white" label="Fichier">
         <q-menu>
           <q-list style="min-width: 100px">
             <q-item clickable v-close-popup @click="()=>emit('newDoc')"   >

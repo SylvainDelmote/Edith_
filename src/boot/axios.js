@@ -20,5 +20,16 @@ export default boot(({ app }) => {
   // ^ ^ ^ this will allow you to use this.$api (for Vue Options API form)
   //       so you can easily perform requests against your app's API
 })
-
 export { api }
+
+function tryMeIn(answer){
+  console.log('trymeIn', answer)
+  return answer
+}
+
+async function tryMeOut(){
+     let answer =  await api.get('/documents')
+     console.log(' INSIDE LOG ANSWER', answer)
+     return answer
+}
+

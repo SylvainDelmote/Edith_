@@ -31,48 +31,69 @@
 
 // DEFINI LA PALETTE POUR LE MODE CLAIR
 body.body--light{
-    --q-primary : var(--nord10);
-    --q-secondary : var(--nord4);
+    --q-primary : var(--nord8);
+    --q-secondary : var(--nord9);
     --q-accent: var(--nord7);
-    --q-dark : var(--nord10);
+    --q-dark : var(--nord0);
     --q-info: var(--nord12);
     --q-warning: var(--nord13);
-    --q-positive  : var(--nord8);
+    --q-positive  : var(--nord14);
     --q-negative  : var(--nord11);
 
-    // AJOUTE  UNE COULEUR MAIN 
-    .text-main{
-      color: var(--nord2) !important;
+// AJOUTE  UNE COULEUR ELEVATED 
+      .text-elevated{
+        color: var(--nord4) !important;
+      }
+      .bg-elevated{
+        background :var(--nord6) !important;
+      }
+    
+// AJOUTE  UNE COULEUR CONTRAST 
+    .text-contrast{
+      color: var(--nord1) !important;
     }
-    .bg-main{
-      background:rgb(254, 254, 255)  !important;
+    .bg-contrast{
+      background :var(--nord1) !important;
     }
     
-    // DEFINI LA COULEUR DE BACKGROUND DU BODY
-    background-color: rgb(254, 254, 255);
+    .contrasted{
+      background :var(--nord4) !important;
+      color: var(--nord1) !important;
+    }
 
+// DEFINI LA COULEUR DE BACKGROUND DU BODY
+  background-color: var(--nord6) !important;  
   }
 
 // DEFINI LA PALETTE POUR LE MODE SOMBRE 
   body.body--dark{
-    --q-primary : var(--nord7);
-    --q-secondary : var(--nord3);
-    --q-dark : var(--nord10);
-    --q-accent: var(--nord4);
-    --q-info: var(--nord13);
-    --q-warning: var(--nord12);
-    --q-positive  : var(--nord8);
+    --q-primary : var(--nord8);
+    --q-secondary : var(--nord9);
+    --q-accent: var(--nord7);
+    --q-dark : var(--nord1);
+    --q-info: var(--nord12);
+    --q-warning: var(--nord13);
+    --q-positive  : var(--nord14);
     --q-negative  : var(--nord11);
 
-    // AJOUTE UNE COULEUR MAIN 
-    .text-main{
-      color: var(--nord2) !important;
+
+// AJOUTE  UNE COULEUR ELEVATED 
+    .text-elevated{
+      color: var(--nord1) !important;
     }
-    .bg-main{
-      background : var(--nord2) !important;
+    .bg-elevated{
+      background :var(--nord1) !important;
     }
 
+ // AJOUTE UNE CLASS CONTRAST QUI ADAPTE LA COULEUR DE TEXT ET DE FOND  
+    .contrasted{
+      background :var(--nord1) !important;
+      color: var(--nord6) !important;
+    }
+    
+
     // COULEUR DU BACKGROUND 
-    background-color: var(--nord2);
+    background-color: var(--nord0);
+    color: var(--nord6);
   }
 

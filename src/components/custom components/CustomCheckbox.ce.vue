@@ -1,20 +1,28 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const contenuA = ref('Contenu A')
-const contenuB = ref ('Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, porro.')
-
+const contenuA = ref('Choix A')
+const contenuB = ref ('Choix B')
 const contenuASelectionne = ref(false)
 const contenuBSelectionne = ref(false)
-
 const contenuEditable = computed( ()=>true )
+const container = ref(null)
+
+function handleClose() {
+  container.value.remove()
+}
+
+function handleConfig() {
+alert("config")
+}
+
 
 
 </script>
 
 
 <template>
-  <div class="checkbox-wrapper">
+  <div class="checkbox-wrapper container" ref="container">
     <div v-if="!contenuBSelectionne">
       <input type="checkbox" v-model="contenuASelectionne" :value="contenuA"  >
       <label  for="contenuA" :contenteditable=contenuEditable class="editable" >{{contenuA}}</label>
@@ -23,10 +31,11 @@ const contenuEditable = computed( ()=>true )
       <input type="checkbox" v-model="contenuBSelectionne" :value="contenuB" >
       <label   for="contenuB" :contenteditable=contenuEditable class="editable" >{{contenuB}}</label>
     </div>
+    <div class="close" @click="handleClose" > </div>
   </div>
+
+
 </template>
-
-
 
 <style scoped>
 
@@ -45,4 +54,52 @@ const contenuEditable = computed( ()=>true )
   flex-direction: column;
   gap: 1rem;
 }
+
+
+.container {
+  position: relative;
+}
+
+.buttons {
+  position: absolute;
+  top: 10px; /* Ajustez la position verticale des boutons selon vos besoins */
+  right: 10px; /* Ajustez la position horizontale des boutons selon vos besoins */
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+.container:hover .close,
+.container:focus .close {
+  opacity: 1;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  cursor: pointer;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+
+
+
 </style>

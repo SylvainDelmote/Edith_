@@ -4,18 +4,17 @@ import {ref} from 'vue'
 const props = defineProps({
     motInitial: String
   })
-const editableSpan = ref('LOOREMZ')
-const buttonContainer = ref(null)
-const nouveauMot = ref('')
-const mot = ref(props.motInitial)
+const word = ref(props.motInitial)
+const container = ref()
 
 function handleClose() {
-  editableSpan.value.setAttribute("contenteditable", "false")
-  editableSpan.value.classList.remove("editable")}
-  buttonContainer.value.remove()
+  const childElements = container.value.children
+  const editableSpan = childElements[0]
+  const buttonsContainer = childElements[1]
+  editableSpan.classList.remove('editable')
+  editableSpan.setAttribute('contentEditable', 'true')
+  buttonsContainer.remove()
 
-function handleConfig() {
-alert("config")
 }
 
 
@@ -25,12 +24,10 @@ alert("config")
 </script>
 
 <template>
-  <span class="container" >
-  <span  ref="editableSpan" contenteditable="true"   v-html = mot class="editable"/> 
-  <div class="buttons" ref="buttonContainer">
-    <button class="close-button" @click="handleClose">X </button>
-    <button class="config-button" @click="handleConfig" > O </button>
-  </div>
+  <span class="container" ref="container" >
+  <span  contenteditable="true"   v-html=word class="editable"/> 
+  <div class="close" @click="handleClose"> </div>
+
   </span>
 
 </template>
@@ -59,11 +56,48 @@ alert("config")
   transition: opacity 0.3s ease;
   opacity: 0;
 }
-.container:hover .buttons,
-.container:focus .buttons {
+.container:hover .close,
+.container:focus .close {
   opacity: 1;
 }
 
+
+.close {
+  position: absolute;
+  right: 0px;
+  top:  10px;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  cursor: pointer;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 10px;
+  top: -20px;
+  content: ' ';
+  height: 10px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+@media print {
+    *[contenteditable="true"], input {
+      background: none;
+    }
+    .hide-in-print {
+      display: none;
+    }
+  }
 
 
 
